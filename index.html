@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0612">
+  <meta name="description" content="Feliz cumpleaños, Daniela. Una sorpresa de galaxia hecha con amor por tu esposo y tu hija.">
+  <meta property="og:title" content="Feliz cumpleaños, mi reina Daniela 👑">
+  <meta property="og:description" content="Una galaxia entera se rinde ante ti. Ábrela con el corazón.">
+  <meta property="og:image" content="foto.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Mi reina · Feliz cumpleaños, My Amor 👑</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       1. TOKENS — Paleta real: oro, violeta galaxia, rosa princesa
+       ============================================================ */
+    :root {
+      --gold: #ffd98a;
+      --gold-bright: #ffe9b8;
+      --gold-deep: #c98a2b;
+      --rose: #ff9ec4;
+      --rose-soft: #ffd3e4;
+      --violet: #b98cff;
+      --violet-deep: #5a3a9e;
+      --cosmos: #0a0612;
+      --cosmos-2: #140a24;
+      --cosmos-3: #1e1030;
+      --cream: #fff6e6;
+      --ink-text: #2b1a0e;
+
+      --f-script: 'Great Vibes', cursive;
+      --f-royal: 'Cinzel', serif;
+      --f-serif: 'Cormorant Garamond', serif;
+      --f-sans: 'Montserrat', Arial, sans-serif;
+
+      --shadow-gold: 0 0 40px rgba(255, 217, 138, .55);
+      --shadow-royal: 0 25px 70px rgba(0, 0, 0, .55);
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+
+      --section-pad: clamp(70px, 10vw, 120px);
+    }
+
+    /* ============================================================
+       2. RESET + BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cosmos);
+      color: var(--cream);
+      font-family: var(--f-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; cursor: pointer; border: 0; }
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    /* Canvas galaxia fijo de fondo */
+    #galaxy {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    /* Capa de pétalos/coronas flotantes */
+    #petals {
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    main, header, footer { position: relative; z-index: 1; }
+
+    /* ============================================================
+       3. UTILIDADES
+       ============================================================ */
+    .wrap { width: min(1120px, 100%); margin-inline: auto; padding-inline: 20px; }
+    .kicker {
+      font-family: var(--f-royal);
+      font-size: .72rem;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.9;
+    }
+    .section-head { text-align: center; margin-bottom: 40px; }
+    h2 {
+      font-family: var(--f-script);
+      font-weight: 400;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 1;
+      color: var(--gold-bright);
+      text-align: center;
+      margin: 14px 0 22px;
+      text-shadow:
+        0 2px 0 var(--gold-deep),
+        0 4px 0 #7a4d12,
+        0 8px 20px rgba(0, 0, 0, .8),
+        0 0 34px rgba(255, 217, 138, .7);
+    }
+    .sub {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: var(--f-serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.85;
+      color: #f4e6c9;
+    }
+    .divider {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      margin: 32px 0;
+      filter: drop-shadow(0 0 14px rgba(255, 217, 138, .9));
+    }
+
+    /* ============================================================
+       4. BOTÓN REAL
+       ============================================================ */
+    .btn-royal {
+      position: relative;
+      padding: 16px 32px;
+      border-radius: 60px;
+      background: linear-gradient(120deg, #fff2c4, #e9bd58 45%, #b47a1f);
+      color: #2b1a0e;
+      font-family: var(--f-royal);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      box-shadow:
+        0 0 30px rgba(255, 217, 138, .55),
+        0 6px 0 #7a4d12,
+        0 18px 40px rgba(0, 0, 0, .45);
+      transition: transform .25s ease, box-shadow .25s ease;
+      overflow: hidden;
+    }
+    .btn-royal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .75) 50%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform .9s ease;
+    }
+    .btn-royal:hover::before { transform: translateX(120%); }
+    .btn-royal:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 50px rgba(255, 217, 138, .85), 0 8px 0 #7a4d12, 0 22px 50px rgba(0, 0, 0, .55);
+    }
+    .btn-royal:active { transform: translateY(1px); box-shadow: 0 0 25px rgba(255,217,138,.55), 0 3px 0 #7a4d12; }
+
+    /* ============================================================
+       5. HERO
+       ============================================================ */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 70px 34px 100px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 217, 138, .45);
+      border-radius: 26px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 217, 138, .18);
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .82fr);
+      align-items: center;
+      gap: clamp(35px, 7vw, 90px);
+      animation: rise 1.2s both;
+    }
+    .hero-copy { max-width: 660px; }
+
+    /* Corona del título */
+    .crown-title {
+      display: inline-block;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 24px rgba(255, 217, 138, .95)) drop-shadow(0 6px 18px rgba(0, 0, 0, .6));
+      animation: crownFloat 4s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    .hero h1 {
+      font-family: var(--f-script);
+      font-weight: 400;
+      font-size: clamp(3.2rem, 7.5vw, 7rem);
+      line-height: .92;
+      color: var(--gold-bright);
+      margin: 6px 0 22px;
+      text-shadow:
+        0 2px 0 var(--gold-deep),
+        0 4px 0 #7a4d12,
+        0 10px 26px rgba(0, 0, 0, .85),
+        0 0 45px rgba(255, 217, 138, .55);
+    }
+    .hero h1 span {
+      display: block;
+      font-size: .7em;
+      color: var(--rose-soft);
+      margin-top: 12px;
+      text-shadow:
+        0 2px 0 #a34d70,
+        0 6px 20px rgba(0, 0, 0, .8),
+        0 0 30px rgba(255, 158, 196, .85);
+    }
+    .hero .lead {
+      font-family: var(--f-serif);
+      font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+      line-height: 1.7;
+      color: #f6ebd6;
+      margin: 0;
+    }
+    .hero .lead b {
+      color: var(--gold-bright);
+      text-shadow: 0 0 16px rgba(255, 217, 138, .9);
+      font-weight: 600;
+    }
+    .hero .date-line {
+      margin: 22px 0 0;
+      color: var(--gold);
+      font-family: var(--f-royal);
+      letter-spacing: .3em;
+      font-size: .72rem;
+      line-height: 1.9;
+    }
+    .hero .btn-royal { margin-top: 28px; }
+
+    /* Foto con corona */
+    .hero-photo {
+      width: min(100%, 420px);
+      justify-self: end;
+      position: relative;
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--gold);
+      border-radius: 32px;
+      background: linear-gradient(145deg, #fff2c4, #d5a43d 55%, #69491b);
+      box-shadow: var(--shadow-royal), var(--shadow-gold);
+      transform: rotate(2deg);
+      transition: transform .6s ease;
+    }
+    .hero-photo:hover { transform: rotate(0deg) scale(1.02); }
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: .92;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 24px;
+    }
+    .hero-photo .crown-badge {
+      position: absolute;
+      top: -34px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3.4rem;
+      filter: drop-shadow(0 0 18px rgba(255, 217, 138, 1)) drop-shadow(0 6px 12px rgba(0, 0, 0, .7));
+      animation: crownFloat 3.6s ease-in-out infinite;
+      z-index: 4;
+    }
+    .hero-photo figcaption {
+      position: absolute;
+      left: 26px; right: 26px; bottom: 26px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 217, 138, .45);
+      border-radius: 16px;
+      background: rgba(15, 8, 26, .88);
+      backdrop-filter: blur(10px);
+      color: var(--gold-bright);
+      text-align: center;
+      font-family: var(--f-royal);
+      font-size: .66rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    /* Globos corona flotantes */
+    .crown-float {
+      position: absolute;
+      z-index: 1;
+      font-size: 3rem;
+      filter: drop-shadow(0 0 18px rgba(255, 217, 138, .95)) drop-shadow(0 8px 16px rgba(0, 0, 0, .6));
+      animation: crownFloat 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .crown-float.c1 { top: 6%; left: 8%; animation-delay: -1s; font-size: 3.6rem; }
+    .crown-float.c2 { top: 18%; right: 6%; animation-delay: -2.5s; font-size: 2.8rem; }
+    .crown-float.c3 { bottom: 22%; left: 4%; animation-delay: -3.8s; font-size: 2.4rem; }
+    .crown-float.c4 { bottom: 14%; right: 10%; animation-delay: -.6s; font-size: 3.2rem; }
+
+    .scrollhint {
+      position: absolute;
+      bottom: 26px; left: 0; right: 0;
+      text-align: center;
+      font-family: var(--f-royal);
+      font-size: .64rem;
+      letter-spacing: .32em;
+      color: var(--gold);
+      animation: bob 2.2s infinite;
+      z-index: 3;
+    }
+
+    /* ============================================================
+       6. SECCIONES — Fondos cosmos
+       ============================================================ */
+    section { padding: var(--section-pad) 20px; position: relative; }
+    .veil-1 { background: radial-gradient(ellipse at 50% 0, rgba(90, 58, 158, .35), transparent 60%); }
+    .veil-2 { background: radial-gradient(ellipse at 50% 100%, rgba(255, 158, 196, .15), transparent 60%); }
+    .veil-3 { background: radial-gradient(ellipse at center, rgba(90, 58, 158, .28), transparent 65%); }
+
+    /* ============================================================
+       7. GALERÍA
+       ============================================================ */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 44px;
+    }
+    .gallery figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      border: 1px solid rgba(255, 217, 138, .55);
+      background: var(--cosmos-2);
+      box-shadow: var(--shadow-royal);
+    }
+    .gallery img {
+      width: 100%; height: 360px;
+      object-fit: cover;
+      transition: transform .9s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.07); }
+    .gallery figure:only-child { width: min(580px, 100%); margin-inline: auto; }
+    .gallery figcaption {
+      padding: 16px;
+      text-align: center;
+      font-family: var(--f-script);
+      font-size: 1.6rem;
+      color: var(--gold-bright);
+      text-shadow: 0 0 14px rgba(255, 217, 138, .7);
+    }
+
+    /* ============================================================
+       8. TARJETAS DE AMOR — CRISTAL REAL
+       ============================================================ */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .love-card {
+      position: relative;
+      min-height: 250px;
+      padding: 34px 26px 30px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 217, 138, .35);
+      background:
+        linear-gradient(145deg, rgba(255, 217, 138, .10), rgba(185, 140, 255, .06) 55%, rgba(255, 158, 196, .05)),
+        rgba(20, 10, 36, .55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .08);
+      overflow: hidden;
+      transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+    }
+    .love-card::before {
+      content: "";
+      position: absolute;
+      top: -40%; left: -30%;
+      width: 80%; height: 80%;
+      background: radial-gradient(circle, rgba(255, 217, 138, .18), transparent 70%);
+      border-radius: 50%;
+      transition: transform .8s ease;
+    }
+    .love-card:hover::before { transform: translate(60%, 60%); }
+    .love-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 217, 138, .9);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .55), 0 0 36px rgba(255, 217, 138, .35);
+    }
+    .love-card .crown-mini {
+      position: absolute;
+      top: 14px; right: 16px;
+      font-size: 1.6rem;
+      filter: drop-shadow(0 0 10px rgba(255, 217, 138, .9));
+      opacity: .95;
+    }
+    .love-card .num {
+      font-family: var(--f-royal);
+      font-size: .62rem;
+      letter-spacing: .32em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .love-card h3 {
+      font-family: var(--f-script);
+      font-weight: 400;
+      font-size: 2.1rem;
+      color: var(--rose-soft);
+      margin: 8px 0 14px;
+      text-shadow: 0 0 20px rgba(255, 158, 196, .6);
+    }
+    .love-card p {
+      font-family: var(--f-serif);
+      font-size: 1.16rem;
+      line-height: 1.72;
+      color: #f4e6c9;
+      margin: 0;
+    }
+    .love-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .6;
+    }
+
+    /* ============================================================
+       9. TIMELINE
+       ============================================================ */
+    .timeline {
+      max-width: 880px;
+      margin: 46px auto 0;
+      display: grid;
+      gap: 16px;
+    }
+    .moment {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 217, 138, .22);
+      background: rgba(20, 10, 36, .5);
+      backdrop-filter: blur(8px);
+      transition: border-color .3s ease;
+    }
+    .moment:hover { border-color: rgba(255, 217, 138, .65); }
+    .moment .icon {
+      font-size: 2.1rem;
+      text-align: center;
+      filter: drop-shadow(0 0 12px rgba(255, 217, 138, .75));
+    }
+    .moment h3 {
+      font-family: var(--f-script);
+      font-weight: 400;
+      font-size: 1.95rem;
+      color: var(--gold-bright);
+      margin: 0 0 6px;
+    }
+    .moment p {
+      font-family: var(--f-serif);
+      font-size: 1.14rem;
+      line-height: 1.72;
+      margin: 0;
+      color: #efe1c9;
+    }
+
+    /* ============================================================
+       10. PROMESA
+       ============================================================ */
+    .promise {
+      max-width: 880px;
+      margin: 44px auto 0;
+      padding: clamp(30px, 6vw, 60px);
+      border: 1px solid rgba(255, 217, 138, .55);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(ellipse at top, rgba(255, 217, 138, .14), transparent 70%),
+        rgba(20, 10, 36, .55);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .55), inset 0 0 60px rgba(255, 217, 138, .06);
+    }
+    .promise p {
+      font-family: var(--f-serif);
+      font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+      line-height: 1.85;
+      margin: 0;
+      color: var(--cream);
+    }
+    .promise .script {
+      font-family: var(--f-script);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--gold-bright);
+      margin-top: 24px;
+      text-shadow: 0 0 24px rgba(255, 217, 138, .8);
+    }
+
+    /* ============================================================
+       11. DISTANCIA
+       ============================================================ */
+    .distance {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      margin: 44px auto 0;
+      max-width: 800px;
+    }
+    .distance .line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .distance .heart {
+      font-size: 2.6rem;
+      animation: heartbeat 1.6s infinite;
+      filter: drop-shadow(0 0 16px rgba(255, 158, 196, .9));
+    }
+
+    /* ============================================================
+       12. EDAD / CUMPLEAÑOS
+       ============================================================ */
+    .age {
+      font-family: var(--f-script);
+      font-size: clamp(7rem, 22vw, 14rem);
+      line-height: .8;
+      color: var(--gold-bright);
+      text-shadow:
+        0 3px 0 var(--gold-deep),
+        0 8px 0 #7a4d12,
+        0 12px 30px rgba(0, 0, 0, .9),
+        0 0 55px rgba(255, 217, 138, .75);
+      margin: 28px 0;
+    }
+    .age-caption {
+      font-family: var(--f-royal);
+      font-size: .74rem;
+      letter-spacing: .36em;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       13. CARTA
+       ============================================================ */
+    .letterpaper {
+      max-width: 880px;
+      margin: 44px auto 0;
+      background: #fff8e8;
+      color: var(--ink-text);
+      padding: clamp(30px, 6vw, 62px);
+      border-radius: 10px 30px 10px 30px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .7);
+      position: relative;
+    }
+    .letterpaper::before {
+      content: "👑";
+      position: absolute;
+      top: -28px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      filter: drop-shadow(0 0 16px rgba(255, 217, 138, .95));
+    }
+    .letterpaper::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid #d2ae57;
+      border-radius: 6px 22px 6px 22px;
+      pointer-events: none;
+    }
+    .letterpaper > * { position: relative; }
+    .letterpaper .dear {
+      font-family: var(--f-script);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: #98701e;
+    }
+    .letterpaper p {
+      font-family: var(--f-serif);
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #4a3a24;
+    }
+    .letterpaper .sign {
+      text-align: right;
+      font-family: var(--f-script);
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      color: #98701e;
+      margin-top: 10px;
+    }
+
+    /* ============================================================
+       14. FINAL
+       ============================================================ */
+    .final {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: var(--section-pad) 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .final::before {
+      content: "👑";
+      position: absolute;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(4rem, 12vw, 8rem);
+      filter: drop-shadow(0 0 30px rgba(255, 217, 138, .95)) drop-shadow(0 10px 25px rgba(0, 0, 0, .8));
+      animation: crownFloat 5s ease-in-out infinite;
+    }
+    .final h2 {
+      font-size: clamp(3.6rem, 12vw, 8.5rem);
+      margin-top: clamp(60px, 12vw, 120px);
+    }
+    .final .last {
+      max-width: 740px;
+      margin: 0 auto;
+      font-family: var(--f-serif);
+      font-size: clamp(1.2rem, 2.6vw, 1.75rem);
+      line-height: 1.85;
+      color: #f4e6c9;
+    }
+    .final .endline {
+      margin-top: 38px;
+      font-family: var(--f-royal);
+      color: var(--gold);
+      letter-spacing: .32em;
+      font-size: .78rem;
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      color: #b8a58a;
+      font-family: var(--f-royal);
+      font-size: .64rem;
+      letter-spacing: .32em;
+    }
+
+    /* ============================================================
+       15. SORPRESA
+       ============================================================ */
+    #surprise {
+      display: none;
+      margin: 28px auto 0;
+      max-width: 720px;
+      padding: 24px 26px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 217, 138, .55);
+      background: rgba(20, 10, 36, .75);
+      backdrop-filter: blur(12px);
+      font-family: var(--f-serif);
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: var(--gold-bright);
+      text-align: center;
+      animation: rise 1s both;
+      box-shadow: 0 0 40px rgba(255, 217, 138, .3);
+    }
+    #surprise.open { display: block; }
+
+    /* ============================================================
+       16. REVEAL / ANIMACIONES
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .petal {
+      position: absolute;
+      top: -60px;
+      animation: fall linear forwards;
+      opacity: .95;
+      filter: drop-shadow(0 0 10px rgba(255, 217, 138, .9));
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to { transform: translate3d(var(--x), 115vh, 0) rotate(760deg); opacity: .06; }
+    }
+    @keyframes crownFloat {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-14px) rotate(3deg); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(34px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes bob {
+      50% { transform: translateY(8px); }
+    }
+    @keyframes heartbeat {
+      15%, 35% { transform: scale(1.2); }
+      25%, 45% { transform: scale(1); }
+    }
+
+    /* ============================================================
+       17. RESPONSIVE
+       ============================================================ */
+    @media (max-width: 780px) {
+      .hero { padding: 80px 26px 96px; text-align: center; }
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+      .hero-copy { margin-inline: auto; }
+      .hero-photo { justify-self: center; width: min(340px, 80vw); }
+      .hero-photo img { aspect-ratio: 1.02; }
+      .crown-float.c1 { font-size: 2.4rem; left: 4%; top: 3%; }
+      .crown-float.c2 { font-size: 2rem; right: 4%; top: auto; bottom: 8%; }
+      .crown-float.c3 { font-size: 1.8rem; bottom: 4%; }
+      .crown-float.c4 { font-size: 2.2rem; right: 4%; top: 4%; }
+      .gallery img { height: 300px; }
+      .moment { grid-template-columns: 48px 1fr; gap: 14px; padding: 20px; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding-inline: 20px; }
+      .hero h1 { font-size: 3.6rem; }
+      .hero .date-line { letter-spacing: .2em; }
+      .hero-photo { width: min(290px, 82vw); }
+      .distance { gap: 8px; }
+      .love-card { padding: 28px 22px 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Galaxia 3D girando en canvas -->
+  <canvas id="galaxy" aria-hidden="true"></canvas>
+  <!-- Pétalos / coronas flotantes -->
+  <div id="petals" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <header class="hero">
+    <span class="crown-float c1" aria-hidden="true">👑</span>
+    <span class="crown-float c2" aria-hidden="true">👑</span>
+    <span class="crown-float c3" aria-hidden="true">👑</span>
+    <span class="crown-float c4" aria-hidden="true">👑</span>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="kicker">Una sorpresa de tu esposo y tu hija</div>
+        <div class="crown-title" aria-hidden="true">👑</div>
+        <h1>Feliz cumpleaños,<span>My Amor</span></h1>
+        <p class="lead">
+          Hoy el universo entero se rinde ante la mujer que llena de amor nuestro hogar.
+          Eres <b>la mejor esposa para papá y la mamá más maravillosa para mí</b>.
+          ¡Te amamos con todo el corazón! 💛
+        </p>
+        <div class="date-line">06 DE NOVIEMBRE · CELEBRAMOS TU VIDA Y TODO LO QUE ERES</div>
+        <button class="btn-royal" type="button" onclick="openSurprise()">Abrir tu sorpresa, mamá 🎁</button>
+        <div id="surprise" role="region" aria-live="polite">
+          Mamá, papá y yo te mandamos el abrazo más grande del mundo.
+          Gracias por llenar nuestros días de amor. ¡Feliz cumpleaños, mi reina! 👑💞
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <span class="crown-badge" aria-hidden="true">👑</span>
+        <img src="foto.jpeg" alt="Daniela junto a su esposo y su hija en la playa" loading="eager">
+        <figcaption>Con todo nuestro amor · Papá y tu niña</figcaption>
+      </figure>
+    </div>
+
+    <div class="scrollhint">BAJA DESPACITO, MI REINA · ESTA GALAXIA ES TODA TUYA ✧</div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         RECUERDOS / FLORES
+         ============================================================ -->
+    <section class="veil-1" id="recuerdos">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Nuestros recuerdos y un detalle para ti</div>
+          <h2>Lo más bonito de mi vida</h2>
+        </div>
+        <p class="sub">
+          Y porque una reina merece flores, también preparamos este detalle para ti. 💛
+        </p>
+        <div class="gallery">
+          <figure>
+            <img src="flores.jpeg" alt="Ramo de rosas amarillas preparado para celebrar un cumpleaños" loading="lazy">
+            <figcaption>Un ramo para la reina de nuestra familia.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MI NIÑA CONSENTIDA
+         ============================================================ -->
+    <section class="veil-2">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Para mi esposa, mi compañera, mi todo</div>
+          <h2>Mi niña consentida</h2>
+        </div>
+        <p class="sub">
+          No te voy a decir que somos una pareja perfecta, porque lo nuestro es mucho más real y mucho
+          más bonito que eso. Hemos tenido días preciosos y también días difíciles; desacuerdos,
+          discusiones, silencios y momentos en los que nos ha tocado respirar profundo. Pero aquí
+          seguimos, mi amor. Eligiéndonos, aprendiendo y apostándole a este nosotros.
+        </p>
+        <div class="divider" aria-hidden="true">👑 ✦ 🌻 ✦ 👑</div>
+        <div class="promise">
+          <p>
+            Porque amar no es no discutir nunca. Amar también es aprender a escucharnos después de un
+            desacuerdo, cuidar lo que estamos construyendo y recordar que estamos del mismo lado. Yo no
+            quiero una historia perfecta: quiero nuestra historia, con todo lo que somos, y con
+            muchísimos capítulos por vivir.
+          </p>
+          <div class="script">Y yo voy por muchos años más contigo.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RAZONES — MUCHAS TARJETAS EMOTIVAS
+         ============================================================ -->
+    <section class="veil-1">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Tarjetitas para guardar en el corazón</div>
+          <h2>Razones por las que te elijo</h2>
+        </div>
+        <p class="sub">
+          Abre cada tarjeta con el corazón. Son pedacitos de todo lo que quisiera decirte mirándote a los ojos.
+        </p>
+        <div class="cards">
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">01 · MI PERSONA FAVORITA</div>
+            <h3>Mi reina hermosa</h3>
+            <p>Si me preguntan dónde quiero estar, mi respuesta siempre será donde pueda abrazarte y verte sonreír.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">02 · MI TERNURA</div>
+            <h3>Mi niña consentida</h3>
+            <p>Quiero seguir consintiéndote, cuidándote, haciéndote reír y recordándote lo preciosa que eres para mí.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">03 · MI DESTINO</div>
+            <h3>Mi amor de mi vida</h3>
+            <p>No eres una casualidad bonita: eres esa persona con quien quiero seguir construyendo mi hogar y mi futuro.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">04 · MI COMPLICIDAD</div>
+            <h3>Mi baby</h3>
+            <p>Hasta en los días de locura, cuando discutimos por cualquier cosa, sigues siendo mi persona favorita para hacer las paces.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">05 · MI CERTEZA</div>
+            <h3>Ya son años y años</h3>
+            <p>No estamos contando unos cuantos meses, mi amor. Son años de historia, aprendizajes, recuerdos y amor que todavía tiene mucho por crecer.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">06 · MI PROMESA</div>
+            <h3>Vamos por más</h3>
+            <p>Más viajes, más abrazos, más cumpleaños juntos, más sueños cumplidos y más motivos para decir: qué bonito es tenerte.</p>
+          </article>
+
+          <!-- NUEVAS TARJETAS EMOTIVAS -->
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">07 · LA PRIMERA VEZ QUE TE VI</div>
+            <h3>Y lo supe</h3>
+            <p>No necesité mil señales ni años para entenderlo. Cuando te vi, algo dentro de mí dijo: “es ella”. Y no me equivoqué.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">08 · TU RISA</div>
+            <h3>Mi sonido favorito</h3>
+            <p>Hay días en los que el mundo pesa, y basta con escucharte reír para que todo se acomode. Tu risa es mi lugar seguro.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">09 · TU FUERZA</div>
+            <h3>Mi admiración</h3>
+            <p>Te he visto levantarte cuando otros se habrían rendido. Admiro tu fuerza, aunque tú no siempre la veas. Yo sí la veo, y es enorme.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">10 · CUANDO ME ABRAZAS</div>
+            <h3>Mi refugio</h3>
+            <p>Tu abrazo tiene algo que no sé explicar: me calma, me recuerda que no estoy solo y me hace sentir que puedo con todo.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">11 · NUESTRA HIJA</div>
+            <h3>La mejor mamá</h3>
+            <p>Verte ser mamá es de las cosas más hermosas que me ha regalado la vida. Nuestra niña tiene la fortuna de crecer con tu amor.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">12 · LOS DÍAS DIFÍCILES</div>
+            <h3>No me rendí, no me rendiré</h3>
+            <p>Hemos tenido tormentas, y en medio de ellas entendí algo: no quiero un amor fácil, quiero un amor verdadero. Y ese eres tú.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">13 · TU MIRADA</div>
+            <h3>Donde quiero quedarme</h3>
+            <p>Podría perderme mil veces en tus ojos y nunca querer regresar. En tu mirada encontré el hogar que no sabía que buscaba.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">14 · CADA MAÑANA</div>
+            <h3>Mi primer pensamiento</h3>
+            <p>Antes de abrir los ojos, ya estás en mi cabeza. Y no importa cuán largo sea el día: siempre termina con tu nombre.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">15 · AUNQUE DUELA</div>
+            <h3>No te cambio</h3>
+            <p>No cambiaría nada de ti, ni tus días grises ni tus días radiantes. Te eligiría de nuevo, con todo y con todo lo que somos.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">16 · MI VIDA ENTERA</div>
+            <h3>Sin dudarlo</h3>
+            <p>Si volviera a nacer, te buscaría entre mil personas. Porque no quiero una vida sin ti, ni siquiera un día sin tu amor.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">17 · PERDÓN</div>
+            <h3>Por lo que no supe decir</h3>
+            <p>Si alguna vez te fallé o no supe amarte como merecías, perdóname. Estoy aprendiendo, y quiero aprender siempre de la mano contigo.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">18 · LA DISTANCIA</div>
+            <h3>Más cerca que nunca</h3>
+            <p>Aunque hoy haya kilómetros entre nosotros, mi corazón se quedó contigo. Te extraño tanto que hasta el silencio me habla de ti.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">19 · NUESTRO FUTURO</div>
+            <h3>Lo que viene</h3>
+            <p>Quiero envejecer contigo. Quiero ver canas, arrugas y recuerdos juntos. Quiero que seas el último rostro que vea y el primero que ame cada día.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">20 · HOY, MAÑANA Y SIEMPRE</div>
+            <h3>Mi reina eterna</h3>
+            <p>Hoy cumpleaños tú, pero el regalo lo tengo yo: puedo decir que eres mi esposa, mi compañera, la madre de mi hija y el amor de mi vida.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">21 · SOLO POR HOY</div>
+            <h3>Llora si quieres</h3>
+            <p>Y si lees esto con lágrimas, no las escondas. Quiero que sepas que alguien te ama tanto que hasta tu llanto le importa. Ese alguien soy yo.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">22 · POR SI ALGUNA VEZ LO DUDAS</div>
+            <h3>Eres suficiente</h3>
+            <p>Si algún día sientes que no eres suficiente, vuelve aquí. A esta tarjeta. A este amor. A mí. Porque tú, mi reina, siempre has sido suficiente para mí.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">23 · MIS ÚLTIMAS PALABRAS</div>
+            <h3>Gracias</h3>
+            <p>Gracias por elegirme, por quedarte, por amarme a pesar de todo. Gracias por ser tú. Gracias por existir. Te amo, mi reina, más de lo que cabe en un universo.</p>
+          </article>
+
+          <article class="love-card"><span class="crown-mini" aria-hidden="true">👑</span>
+            <div class="num">24 · MI CORONA</div>
+            <h3>Sin ti no hay reino</h3>
+            <p>Una corona sin reina es solo metal. Un trono sin ti es una silla vacía. Tú eres la razón de mi reino, mi reina, mi todo.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TIMELINE
+         ============================================================ -->
+    <section class="veil-3">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Lo que somos, de verdad</div>
+          <h2>Nuestra historia no se rinde</h2>
+        </div>
+        <div class="timeline">
+          <div class="moment"><div class="icon" aria-hidden="true">✨</div>
+            <div><h3>Todo lo bonito que hemos vivido</h3>
+              <p>Guardo nuestras risas, las ocurrencias, las conversaciones interminables y esos instantes sencillos que terminan siendo los recuerdos más grandes.</p></div>
+          </div>
+          <div class="moment"><div class="icon" aria-hidden="true">🌧️</div>
+            <div><h3>También hemos tenido tormentas</h3>
+              <p>Hemos discutido y a veces no pensamos igual. Pero deseo que nunca olvidemos que nuestro amor merece paciencia, respeto, diálogo y ganas de comprendernos.</p></div>
+          </div>
+          <div class="moment"><div class="icon" aria-hidden="true">🤝</div>
+            <div><h3>Seguimos aquí, de la mano</h3>
+              <p>Después de los días buenos y los complicados, seguimos apostando por nosotros. No porque todo sea fácil, sino porque lo que sentimos vale la pena cuidarlo.</p></div>
+          </div>
+          <div class="moment"><div class="icon" aria-hidden="true">🏡</div>
+            <div><h3>Lo que todavía nos espera</h3>
+              <p>Nos faltan abrazos de esos que curan el cansancio, mañanas juntos, aventuras, metas, celebraciones y una vida llena de momentos que hoy apenas imaginamos.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DISTANCIA
+         ============================================================ -->
+    <section class="veil-2">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Aunque hoy no pueda abrazarte como quisiera</div>
+          <h2>La distancia no cambia lo que siento</h2>
+        </div>
+        <p class="sub">
+          Mi amor, quisiera estar ahí para mirarte a los ojos, llenarte de besos, abrazarte fuerte y
+          cantarte el cumpleaños cerquita del oído. Hoy nos separan kilómetros, pero no las ganas de
+          estar juntos. Cada día que pasa es un día menos para ese abrazo que tanto quiero darte.
+        </p>
+        <div class="distance" aria-hidden="true">
+          <div class="line"></div>
+          <div class="heart">💗</div>
+          <div class="line"></div>
+        </div>
+        <div class="promise">
+          <p>
+            Pronto estaremos juntos, mi niña. Y cuando llegue ese momento, quiero abrazarte sin mirar
+            el reloj, llenarte de besitos y celebrar que todo este tiempo de espera también nos trajo
+            hasta ese instante. Mientras tanto, recibe este abrazo enorme, aunque viaje por una pantalla.
+          </p>
+          <div class="script">Te amo. Siempre cerquita de mi corazón.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CUMPLEAÑOS
+         ============================================================ -->
+    <section class="veil-1">
+      <div class="wrap reveal" style="text-align:center">
+        <div class="kicker">06 · 11 · El día de mi persona favorita</div>
+        <div class="age">26</div>
+        <div class="age-caption">AÑOS DE BELLEZA, FUERZA, TERNURA Y LUZ</div>
+        <h2>Feliz cumpleaños, mi reina</h2>
+        <p class="sub">
+          Que tus 26 lleguen cargados de salud, tranquilidad, oportunidades, sueños cumplidos y
+          motivos para sonreír. Que nunca te falten amor, fuerza para lograr lo que deseas y personas
+          que te recuerden lo maravillosa que eres. Yo quiero estar ahí para celebrar cada uno de tus logros.
+        </p>
+        <div class="divider" aria-hidden="true">👑 ✦ 🌻 ✦ 👑</div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CARTA
+         ============================================================ -->
+    <section class="veil-3">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <div class="kicker">Léela como si te la estuviera diciendo al oído</div>
+          <h2>Una carta para mi esposa</h2>
+        </div>
+        <article class="letterpaper">
+          <div class="dear">Mi Daniela, mi niña hermosa:</div>
+          <p>
+            Hoy cumples 26 años y quisiera tenerte frente a mí para mirarte, sonreírte y decirte cuánto
+            te amo. No sabes cuánto quisiera estar ahí, despertarte con un beso, llevarte flores rosadas
+            y amarillas, consentirte como te mereces y hacerte sentir la mujer más especial del mundo.
+          </p>
+          <p>
+            Hemos vivido años y años de historia. No todo ha sido color de rosa: hemos tenido
+            diferencias, discusiones y momentos en los que nos ha costado entendernos. Pero también
+            hemos tenido amor, risas, complicidad y muchísimas razones para seguir. Yo sé que tenemos
+            cosas por aprender y mejorar, y quiero que sigamos creciendo juntos, con paciencia, respeto y cariño.
+          </p>
+          <p>
+            Quiero que sepas algo, mi amor: la distancia no ha conseguido cambiar lo que siento por ti.
+            Te extraño, me haces falta y sueño con el momento de volver a tenerte entre mis brazos.
+            Pronto estaremos juntos, mi baby, y voy a recuperar todos esos abrazos y besos que hoy te debo.
+          </p>
+          <p>
+            Deseo que este nuevo año te regale todo lo bueno que tu corazón merece. Nunca dejes de
+            soñar, de reír, de ser tú. Si alguna vez tienes un día difícil, recuerda que aquí tienes a
+            alguien que te ama, que cree en ti y que quiere seguir caminando a tu lado.
+          </p>
+          <p>
+            <b>Gracias por ser mi esposa, mi compañera, mi reina hermosa y el amor de mi vida. No te
+            prometo que nunca tendremos días difíciles; te prometo que quiero seguir aprendiendo a
+            amarte mejor y construir contigo muchos años más.</b>
+          </p>
+          <p>
+            Feliz cumpleaños, mi niña consentida. Que hoy te abrace la vida con la misma dulzura con la
+            que yo quisiera abrazarte.
+          </p>
+          <div class="sign">Te amo con todo mi corazón. 💗</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL
+         ============================================================ -->
+    <section class="final">
+      <div class="wrap reveal">
+        <div class="kicker">Y para terminar, quiero que nunca lo olvides…</div>
+        <h2>Te volvería a elegir</h2>
+        <p class="last">
+          Entre tantas personas, te elijo a ti. Con tus risas, tus ocurrencias, tus días buenos, tus
+          días difíciles y esa forma tuya de ser que me enamora. No importa cuántos kilómetros haya
+          hoy entre nosotros: eres mi amor de mi vida, mi reina, mi niña consentida, mi baby. Vamos
+          por más años, más sueños y más vida juntos.
+        </p>
+        <div class="divider" aria-hidden="true">👑 ✦ 🌻 ✦ 👑</div>
+        <div class="endline">FELICES 26, DANIELA RESTREPO · MI ESPOSA · MI REINA · MI AMOR</div>
+        <p style="font-family:var(--f-script);font-size:clamp(2.2rem, 5vw, 3rem);color:var(--rose-soft);margin-top:30px;text-shadow:0 0 24px rgba(255,158,196,.85)">
+          Pronto juntitos. Te amo. ❤️
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>HECHO PARA DANIELA, CON AMOR DEL BUENO · 06.11.2026</footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    'use strict';
+
+    /* ---------- Botón sorpresa ---------- */
+    function openSurprise() {
+      const box = document.getElementById('surprise');
+      const btn = document.querySelector('.hero .btn-royal');
+      if (!box.classList.contains('open')) {
+        box.classList.add('open');
+        launchBurst();
+        btn.textContent = 'Te amo, mi reina 👑';
+      } else {
+        box.classList.remove('open');
+        btn.textContent = 'Abrir tu sorpresa, mamá 🎁';
+      }
+    }
+
+    /* ---------- Reveal on scroll ---------- */
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    /* ---------- Pétalos / coronas flotantes ---------- */
+    const petals = ['👑', '✨', '🌻', '🌼', '💛', '👑'];
+    const layer = document.getElementById('petals');
+
+    function petal() {
+      const el = document.createElement('span');
+      el.className = 'petal';
+      el.textContent = petals[Math.floor(Math.random() * petals.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (14 + Math.random() * 28) + 'px';
+      el.style.animationDuration = (9 + Math.random() * 10) + 's';
+      el.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
+      layer.appendChild(el);
+      setTimeout(() => el.remove(), 20000);
+    }
+    function launchBurst() { for (let i = 0; i < 50; i++) setTimeout(petal, i * 40); }
+
+    /* ============================================================
+       GALAXIA 3D GIRANDO — Canvas con proyección de estrellas
+       ============================================================ */
+    (function galaxy() {
+      const canvas = document.getElementById('galaxy');
+      const ctx = canvas.getContext('2d');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let W, H, DPR;
+      let stars = [];
+      let nebulas = [];
+      const STAR_COUNT = window.innerWidth < 700 ? 320 : 620;
+      const FOCAL = 620;
+      let rotation = 0;
+      let t = 0;
+
+      function resize() {
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W * DPR;
+        canvas.height = H * DPR;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      }
+
+      // Colores galaxia
+      const palette = [
+        [255, 217, 138],   // oro
+        [255, 233, 184],   // oro claro
+        [255, 158, 196],   // rosa
+        [185, 140, 255],   // violeta
+        [255, 246, 230],   // blanco crema
+        [140, 200, 255]    // azul estelar
+      ];
+
+      function makeStars() {
+        stars = [];
+        const R = Math.min(W, H) * 0.7;
+        for (let i = 0; i < STAR_COUNT; i++) {
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+          const r = R * (0.35 + Math.random() * 0.75);
+          const c = palette[Math.floor(Math.random() * palette.length)];
+          stars.push({
+            x: r * Math.sin(phi) * Math.cos(theta),
+            y: r * Math.cos(phi),
+            z: r * Math.sin(phi) * Math.sin(theta),
+            ox: 0, oy: 0, oz: 0,
+            size: 0.6 + Math.random() * 1.8,
+            color: c,
+            twinkle: Math.random() * Math.PI * 2,
+            twinkleSpeed: 0.01 + Math.random() * 0.04,
+            speed: 0.0003 + Math.random() * 0.0009
+          });
+        }
+        // Nebulosas: manchas suaves de color
+        nebulas = [];
+        for (let i = 0; i < 5; i++) {
+          nebulas.push({
+            x: (Math.random() - 0.5) * W * 0.9,
+            y: (Math.random() - 0.5) * H * 0.9,
+            r: 180 + Math.random() * 320,
+            color: palette[Math.floor(Math.random() * palette.length)],
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function draw() {
+        t += 0.016;
+        rotation += reducedMotion ? 0.0008 : 0.0026;
+
+        // Fondo radial galaxia
+        const bg = ctx.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.75);
+        bg.addColorStop(0, 'rgba(30, 16, 48, 1)');
+        bg.addColorStop(0.55, 'rgba(14, 8, 26, 1)');
+        bg.addColorStop(1, 'rgba(6, 3, 12, 1)');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+
+        // Nebulosas suaves
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        nebulas.forEach((n, i) => {
+          const drift = Math.sin(t * 0.15 + n.phase) * 40;
+          const g = ctx.createRadialGradient(n.x + drift, n.y + drift, 0, n.x + drift, n.y + drift, n.r);
+          const [r, gg, b] = n.color;
+          g.addColorStop(0, `rgba(${r}, ${gg}, ${b}, 0.10)`);
+          g.addColorStop(0.5, `rgba(${r}, ${gg}, ${b}, 0.035)`);
+          g.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(n.x + drift, n.y + drift, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.restore();
+
+        // Proyección 3D de estrellas
+        const cx = W / 2;
+        const cy = H / 2;
+        const cosR = Math.cos(rotation);
+        const sinR = Math.sin(rotation);
+
+        ctx.globalCompositeOperation = 'lighter';
+
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i];
+
+          // Rotación sobre eje Y
+          let x = s.x * cosR - s.z * sinR;
+          let z = s.x * sinR + s.z * cosR;
+          let y = s.y;
+
+          // Rotación leve sobre eje X para dar sensación 3D
+          const tilt = 0.35;
+          const y2 = y * Math.cos(tilt) - z * Math.sin(tilt);
+          const z2 = y * Math.sin(tilt) + z * Math.cos(tilt);
+          y = y2; z = z2;
+
+          // Proyección perspectiva
+          const depth = FOCAL + z;
+          if (depth <= 1) continue;
+          const scale = FOCAL / depth;
+          const sx = cx + x * scale;
+          const sy = cy + y * scale;
+
+          if (sx < -20 || sx > W + 20 || sy < -20 || sy > H + 20) continue;
+
+          // Titileo
+          s.twinkle += s.twinkleSpeed;
+          const tw = 0.65 + Math.sin(s.twinkle) * 0.35;
+
+          // Tamaño según profundidad
+          const size = Math.max(0.35, s.size * scale * 1.4);
+          const [r, gg, b] = s.color;
+
+          // Halo
+          const halo = ctx.createRadialGradient(sx, sy, 0, sx, sy, size * 6);
+          halo.addColorStop(0, `rgba(${r}, ${gg}, ${b}, ${0.55 * tw * scale})`);
+          halo.addColorStop(1, `rgba(${r}, ${gg}, ${b}, 0)`);
+          ctx.fillStyle = halo;
+          ctx.beginPath();
+          ctx.arc(sx, sy, size * 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Núcleo
+          ctx.fillStyle = `rgba(${r}, ${gg}, ${b}, ${Math.min(1, tw * scale * 1.6)})`;
+          ctx.beginPath();
+          ctx.arc(sx, sy, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Anillo galáctico decorativo
+        ctx.globalCompositeOperation = 'lighter';
+        const ringR = Math.min(W, H) * 0.42;
+        const ringGrad = ctx.createRadialGradient(cx, cy, ringR * 0.7, cx, cy, ringR * 1.05);
+        ringGrad.addColorStop(0, 'rgba(255, 217, 138, 0)');
+        ringGrad.addColorStop(0.5, `rgba(255, 217, 138, ${0.06 + Math.sin(t * 0.5) * 0.03})`);
+        ringGrad.addColorStop(1, 'rgba(255, 217, 138, 0)');
+        ctx.fillStyle = ringGrad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, ringR * 1.05, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.globalCompositeOperation = 'source-over';
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', () => {
+        resize();
+        makeStars();
+      });
+
+      // Pausa cuando la pestaña no está visible (ahorro de batería)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(rafId);
+        else rafId = requestAnimationFrame(draw);
+      });
+
+      resize();
+      makeStars();
+
+      let rafId = requestAnimationFrame(draw);
+
+      // Ajuste: guardar el id real
+      const originalRAF = window.requestAnimationFrame;
+      // (patrón simple: reasignamos dentro del closure en cada frame no es necesario)
+      // Para asegurar pausa correcta, envolvemos:
+      (function loop() {
+        rafId = originalRAF(loop);
+        // No hacemos nada aquí; draw se autollama, así que solo controlamos el id
+      })();
+
+      // Corrección final: el bucle real es draw(), guardamos su id
+      // Redefinimos para pausar correctamente
+      const origDraw = draw;
+      window.__galaxyRAF = null;
+      function startDraw() {
+        if (window.__galaxyRAF) cancelAnimationFrame(window.__galaxyRAF);
+        window.__galaxyRAF = requestAnimationFrame(function step() {
+          origDraw();
+          window.__galaxyRAF = requestAnimationFrame(step);
+        });
+      }
+      // Detenemos el bucle anterior no controlado y arrancamos el controlado
+      if (rafId) cancelAnimationFrame(rafId);
+      startDraw();
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (window.__galaxyRAF) cancelAnimationFrame(window.__galaxyRAF);
+          window.__galaxyRAF = null;
+        } else if (!window.__galaxyRAF) {
+          startDraw();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
